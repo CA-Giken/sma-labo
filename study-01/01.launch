@@ -1,0 +1,29 @@
+<launch>
+  <rosparam command="load" file="$(find sma-labo)/study-01/config.yaml" />
+<!--broadcast TF-->
+  <node pkg="rovi_utils" type="config_tf.py" name="config_tf">
+    <remap from="reload/config_tf" to="/request/redraw" />
+  </node>
+
+<!--nodes for robot calib-->
+
+<!--building cyber space with RViz-->
+  <node pkg="sma-labo" type="env.py" name="environment" />
+  <node pkg="sma-labo" type="hand.py" name="">
+    <remap from="~config" to="/config/hand" />
+  </node>
+  <node ns="camera" pkg="sma-labo" type="stereo_camera.py" name="">
+    <remap from="~config" to="/config/vcam" />
+    <remap from="~param" to="/camera" />
+    <remap from="~info" to="/camera/info" />
+    <remap from="~X1" to="/camera/X1" />
+    <remap from="~Y1" to="/camera/Y1" />
+    <remap from="~pc2" to="/camera/pc2" />
+    <remap from="~info" to="/camera/camera_info" />
+    <remap from="~info2" to="/camera2/camera_info" />
+  </node>
+  <node pkg="rviz" type="rviz" name="" args="-d $(find sma-labo)/study-01/default.rviz" />
+
+<!--User Input Panel-->
+
+</launch>

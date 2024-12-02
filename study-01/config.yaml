@@ -1,0 +1,62 @@
+config:
+  vcam:
+    height: 1080
+    width: 1080
+    baseline: 80
+    wx: 600
+    wy: 600  #wx*height/width
+    wd: 600
+  scene:
+    meshes:
+    - ['package://sma-labo/study-01/PentaBoard.stl','camera_wd',[1.,1.,1.]]
+  hand:
+    base_frame_id: camera
+    frame_id: camera_wd
+  penta_detector:
+    frame_id: penta
+    camera_frame_id: camera
+    image: /camera/image
+    info: /camera/camera_info
+
+vcam:
+  streaming: False
+
+config_tf:
+  base:
+    parent_frame_id: world
+    transform:
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+        w: 1
+      translation:
+        x: 0
+        y: 0
+        z: 0
+  camera:
+    parent_frame_id: base
+    transform:
+      rotation:
+        w: 0.0
+        x: 0.707
+        y: 0.707
+        z: 0.0
+      translation:
+        x: 0.
+        y: -500.
+        z: 1300.
+
+  camera_wd:
+    parent_frame_id: camera
+    transform:
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+        w: 1
+      translation:
+        x: 0
+        y: 0
+        z: 500
+

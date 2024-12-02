@@ -1,10 +1,7 @@
-# sma-labo
+# Sma-Labo
 ## Smart Robot 実験室  
-Smaboのシミュレーション実験室で、ロボットの新たな活用領域を拡げよう。
+SmaBoのシミュレーション実験室で、ロボットの新たな活用領域を拡げよう。
 
-## 研究一覧
-1. ステレオカメラの実験  
-~~~
-roslaunch sma-labo study01.launch
-~~~
-2. HTML/CSSでUIを作ってみよう
+## 一覧
+1. [ステレオカメラの実験](study-01/README.md)
+2. [HTML版ロボットキャリブ](study-02/)
