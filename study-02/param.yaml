@@ -36,3 +36,11 @@ solver:
 wpc:
   recipeName: REINFORCE_3
   recipeNumber: 1
+
+config:
+  cache:
+  - topic: /camera/image
+    type: sensor_msgs/Image
+  - file: /tmp/capt00.pgm
+    type: sensor_msgs/Image
+    to: /cache/camera/image

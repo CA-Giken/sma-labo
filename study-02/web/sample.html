@@ -4,11 +4,12 @@
     <title>Rosparam number R/W example</title>
     <script type="text/javascript" src="jquery.js" ></script>
     <script type="text/javascript" src="eel.js"></script>
-    <script type="text/javascript" src="eel_init.js"></script>
+    <script type="text/javascript" src="eel_param.js"></script>
+    <script type="text/javascript" src="eel_topic.js"></script>
   </head>
   <body>
-    <h1>数値型パラメータR/Wサンプル</h1>
-    <div style="font-size:small;">
+    <h2>数値型パラメータR/Wサンプル</h2>
+    <details>
       パラメータのインタフェースとして扱い可能な要素
       <dl>
         <dt>&lt;input class="rosparam" &gt;</dt>
@@ -28,32 +29,19 @@
           <dt>または<q>[...]</q>でもよい</dt><dd>key="['doBin']"</dd>
         </dl>
       </div>
-    </div>
+    </details>
     <div style="display: flex; flex-direction: row; justify-content: space-between">
       <div>
         <h3>スカラー型</h3>
         <hr>
-        <textarea rows="2" cols="80">
-          <input class="rosparam" type="number" name="/solver/doBin" />
-        </textarea><br>
+        <input class="rosparam" type="number" name="/solver/doBin" /><br>
+        <p>同じものをもう１個</p>
         <input class="rosparam" type="number" name="/solver/doBin" />
         <hr>
-        <textarea rows="4" cols="80">
-          <input class="rosparam" type="radio" value="1" name="/solver/doBin"/>
-          <input class="rosparam" type="radio" value="2" name="/solver/doBin"/> 
-          <input class="rosparam" type="radio" value="3" name="/solver/doBin"/> 
-        </textarea><br>  
         <input class="rosparam" type="radio" value="1" name="/solver/doBin" />固定二値化<br>
         <input class="rosparam" type="radio" value="2" name="/solver/doBin" />適応二値化<br>
         <input class="rosparam" type="radio" value="3" name="/solver/doBin" />大津の二値化
         <hr>
-        <textarea rows="5" cols="80">
-          &lt;select class="rosparam" name="/solver/doBin" type="number"&gt;
-            &lt;option value="1"&gt;固定二値化&lt;/option&gt;
-            &lt;option value="2"&gt;適応二値化&lt;/option&gt;
-            &lt;option value="3"&gt;大津二値化&lt;/option&gt;
-          &lt;/select&gt;
-        </textarea><br>
         <select class="rosparam" name="/solver/doBin" type="number">
           <option value="1">固定二値化</option>
           <option value="2">適応二値化</option>
@@ -62,26 +50,12 @@
         <hr>
         <h3>構造型</h3>
         <h4>オブジェクト型</h4>
-        <textarea rows="5" cols="80">
-          &lt;div class="rosparam" name="/solver"&gt;
-            &lt;input type="number" key="['doBin']" /&gt;
-            &lt;input type="number" key="['doICP']" /&gt;
-          &lt;/div&gt;  
-        </textarea>
         <div class="rosparam" name="/solver">
           solverパラム(&lt;input...&gt; as children)<br>
           二値<input type="number" key="['doBin']" size="3" /><br>
           ICP<input type="number" key="['doICP']" size="3" /><br>
         </div>
         <h4>配列型</h4>
-        <textarea rows="7" cols="80">
-          <div class="rosparam" name="/left/detector/ROIEdge">
-            &lt;input type="number" key="[0]['Data'][0]" /&gt;
-            &lt;input type="number" key="[0]['Data'][1]" /&gt;
-            &lt;input type="number" key="[0]['Data'][2]" /&gt;
-            &lt;input type="number" key="[0]['Data'][3]" /&gt;
-          </div>
-        </textarea>
         <div class="rosparam" name="/left/detector/ROIEdge">
           X1<input type="number" key="[0]['Data'][0]" size="3" /><br>
           Y1<input type="number" key="[0]['Data'][1]" size="3" /><br>
@@ -98,9 +72,9 @@
     <div>
       <h3>実行結果</h3>
       <div style="display:block;height:500;width:500;background-color:antiquewhite;">
-        <canvas class="subscribe" rtype="Image" name="/camera/image">
+        <img class="subscribe" name="/camera/image">
           500x500 image
-        </canvas>
+        </img>
       </div>
     </div>
   </body>

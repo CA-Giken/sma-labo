@@ -13,7 +13,6 @@ def set_param(name,val):
 
 @eel.expose
 def get_param(name):
-  print("eel::get_param",name)
   try:
     return rospy.get_param(name)
   except Exception as e:

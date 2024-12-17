@@ -60,3 +60,16 @@ config_tf:
         y: 0
         z: 500
 
+  penta_board:
+    parent_frame_id: camera
+    transform:
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+        w: 1
+      translation:
+        x: 0
+        y: 0
+        z: 500
+

@@ -1,3 +1,0 @@
-<launch>
-  <rosparam command="load" file="$(find sma-labo)/study-02/param.yaml" />
-</launch>

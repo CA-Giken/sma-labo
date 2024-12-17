@@ -23,7 +23,7 @@ def solve(img):
   imgry = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
   ret, imbin = cv2.threshold(imgry, 150, 255, cv2.THRESH_BINARY)
   contours, hierarchy = cv2.findContours(imbin, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-  if(len(contours)!=7):
+  if(len(contours)!=len(ObjectPoints)+1):
     print("Recognised something wrong")
     return np.zeros((4,4)),-1,img
   centers=[]
