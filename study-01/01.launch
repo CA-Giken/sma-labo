@@ -11,6 +11,7 @@
   <node pkg="sma-labo" type="env.py" name="environment" />
   <node pkg="sma-labo" type="hand.py" name="">
     <remap from="~config" to="/config/hand" />
+    <remap from="~tfs" to="/hand/tfs" />
   </node>
   <node ns="camera" pkg="sma-labo" type="stereo_camera.py" name="">
     <remap from="~config" to="/config/vcam" />
@@ -23,7 +24,13 @@
     <remap from="~info2" to="/camera2/camera_info" />
   </node>
   <node pkg="rviz" type="rviz" name="" args="-d $(find sma-labo)/study-01/default.rviz" />
-
+  <node pkg="sma-labo" type="detector.py" name="">
+    <remap from="~config" to="/config/detector" />
+    <remap from="~info" to="/camera/camera_info" />
+    <remap from="~imsub" to="/camera/image" />
+    <remap from="~impub" to="/detector/image" />
+    <remap from="~tfs" to="/detector/tfs" />
+  </node>
 <!--User Input Panel-->
 
 </launch>

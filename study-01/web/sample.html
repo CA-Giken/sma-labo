@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calibration</title>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="ros.js"></script>
+    <script type="text/javascript" src="/bundle.umd.cjs"></script>
+  </head>
+  <body>
+    <h1>キャリブ板でのキャリブレーション</h1>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+      <div  class="subscribe" m-type="geometry_msgs/TransformStamped" name="/detector/tfs">
+        <p>ボード座標(画像推定)</p>
+        <input ext=".header.frame_id" />&rarr;<input ext=".child_frame_id" /><br>
+        X:<input ext=".transform.translation.x" /><br>
+        Y:<input ext=".transform.translation.y" /><br>
+        Z:<input ext=".transform.translation.z" /><br>
+      </div>
+      <div  class="subscribe" m-type="geometry_msgs/TransformStamped" name="/hand/tfs">
+        <p>ボード座標(答え)</p>
+        <input ext=".header.frame_id" />&rarr;<input ext=".child_frame_id" /><br>
+        X:<input ext=".transform.translation.x" /><br>
+        Y:<input ext=".transform.translation.y" /><br>
+        Z:<input ext=".transform.translation.z" /><br>
+      </div>
+    </div>
+    <hr>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+      <div>
+        左カメラ
+         <img m-type="sensor_msgs/Image" name="/camera/image" style="height:500ox;background-color: blue;" />
+      </div>
+    </div>
+  </body>
+</html>

@@ -31,7 +31,8 @@ def cb_img(msg):
       tfs.header.frame_id=Config["base_frame_id"]
       tfs.child_frame_id=Config["frame_id"]
       tfs.transform=tflib.fromRT(cTt)
-      pub_tf.publish(tfs)
+      pub_tfs.publish(tfs)
+      pub_ctf.publish(tfs)
     try:
       msg=bridge.cv2_to_imgmsg(img, "bgr8")
       pub_img.publish(msg)
@@ -39,6 +40,7 @@ def cb_img(msg):
       print("Error in cv_bridge",e)
 
 def cb_info(msg):
+  solver.Kmat=np.array(msg.K).reshape((3,3))
   pass
 
 if __name__=="__main__":
@@ -52,7 +54,8 @@ if __name__=="__main__":
   rospy.Subscriber("~imsub",Image,cb_img)
   rospy.Subscriber("~info",CameraInfo,cb_info)
   pub_img=rospy.Publisher('~impub',Image,queue_size=1);
-  pub_tf=rospy.Publisher('/update/config_tf',TransformStamped,queue_size=1);
+  pub_tfs=rospy.Publisher('~tfs',TransformStamped,queue_size=1);
+  pub_ctf=rospy.Publisher('/update/config_tf',TransformStamped,queue_size=1);
   bridge=CvBridge()
 
   rospy.spin()

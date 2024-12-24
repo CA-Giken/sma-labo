@@ -45,7 +45,9 @@ def initMarker(ev):
   tfThis.transform.rotation.y=quat[1]
   tfThis.transform.rotation.z=quat[2]
   tfThis.transform.rotation.w=quat[3]
-  if ev is not None: pub_tf.publish(tfThis)
+  if ev is not None:
+    pub_tfs.publish(tfThis)
+    pub_ctf.publish(tfThis)
   return tfThis.transform
 
 def followMarker(ev):
@@ -78,7 +80,8 @@ def processFeedback(feedback):
   tfThis.transform.translation=p
   tfThis.transform.rotation=o
   tfThis.header.seq=tfThis.header.seq+1
-  pub_tf.publish(tfThis)
+  pub_tfs.publish(tfThis)
+  pub_ctf.publish(tfThis)
 
 if __name__=="__main__":
   rospy.init_node("hand_marker")
@@ -90,8 +93,9 @@ if __name__=="__main__":
 
   tfThis.header.frame_id=Config["base_frame_id"]
   tfThis.child_frame_id=Config["frame_id"]
-    
-  pub_tf=rospy.Publisher('/update/config_tf',TransformStamped,queue_size=1);
+
+  pub_tfs=rospy.Publisher('~tfs',TransformStamped,queue_size=1);    
+  pub_ctf=rospy.Publisher('/update/config_tf',TransformStamped,queue_size=1);
 
   server = InteractiveMarkerServer("hand_marker")
     
