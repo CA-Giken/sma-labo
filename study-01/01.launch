@@ -31,6 +31,10 @@
     <remap from="~impub" to="/detector/image" />
     <remap from="~tfs" to="/detector/tfs" />
   </node>
+  <node ns="camera" pkg="rostopic" name="true" type="rostopic"
+    args="pub error std_msgs/Bool '{data: true}' -r 1" />
+  <node ns="camera" pkg="rostopic" name="false" type="rostopic"
+    args="pub error std_msgs/Bool '{data: false}' -r 0.5" />
 <!--User Input Panel-->
 
 </launch>
